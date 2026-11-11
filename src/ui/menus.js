@@ -271,7 +271,7 @@ export class Menus {
       <h3>Jeu</h3>
       ${f('ai', 'Difficulté des pilotes IA', 0, 3, 1)}
       ${f('quality', 'Qualité graphique', 0, 2, 1)}
-      ${this.field('Vue au départ', `<select data-set="view" data-num="1">${['Poursuite', 'Capot', 'Pare-chocs', 'Cabine'].map((n, i) => `<option value="${i}" ${+c.view === i ? 'selected' : ''}>${n}</option>`).join('')}</select>`)}
+      ${this.field('Vue au départ', `<select data-set="view" data-num="1">${['Poursuite', 'Capot', 'Pare-chocs'].map((n, i) => `<option value="${i}" ${+c.view === i ? 'selected' : ''}>${n}</option>`).join('')}</select>`)}
       ${this.field('Unité de vitesse', `<select data-set="units"><option value="kmh" ${c.units === 'kmh' ? 'selected' : ''}>km/h</option><option value="mph" ${c.units === 'mph' ? 'selected' : ''}>mph</option></select>`)}
       </div><div class="row"><button class="btn primary" data-act="back">Retour</button><button class="btn danger" data-act="reset">${this.confirmReset ? 'Confirmer : tout effacer' : 'Effacer la sauvegarde'}</button></div></div>`);
   }

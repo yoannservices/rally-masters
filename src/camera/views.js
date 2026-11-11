@@ -1,13 +1,14 @@
-/* Caméras : 0 poursuite (3e personne), 1 capot, 2 pare-chocs, 3 cabine. Touche C pour passer à la suivante. */
+/* Caméras : 0 poursuite (3e personne), 1 capot, 2 pare-chocs. Touche C pour passer à la suivante.
+   Pas de vue cabine : les vrais modèles .glb n'ont pas d'habitacle (on verrait l'intérieur de la coque). */
 import * as THREE from 'three';
 import { clamp, lerp } from '../core/util.js';
 
-export const VIEWS = ['Poursuite', 'Capot', 'Pare-chocs', 'Cabine'];
+export const VIEWS = ['Poursuite', 'Capot', 'Pare-chocs'];
 const _p = new THREE.Vector3(), _q = new THREE.Quaternion(), _e = new THREE.Euler(), _t = new THREE.Vector3();
 
 export class CameraRig {
   constructor(camera) { this.cam = camera; this.mode = 0; this.pos = new THREE.Vector3(); this.look = new THREE.Vector3(); this.heading = 0; this.fov = 62; this.shake = 0; this.init = false; }
-  set(mode, model) { this.mode = ((mode % 4) + 4) % 4; this.init = false; if (model) model.setView(this.mode); }
+  set(mode, model) { this.mode = ((mode % VIEWS.length) + VIEWS.length) % VIEWS.length; this.init = false; if (model) model.setView(this.mode); }
   next(model) { this.set(this.mode + 1, model); return VIEWS[this.mode]; }
 
   update(dt, ph, model, t) {

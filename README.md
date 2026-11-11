@@ -14,7 +14,7 @@ Lancer : servir le dossier `web/` (`npx http-server . -p 5180`) puis ouvrir `loi
 - **Championnat** : 5 rallyes de 4 à 6 spéciales, pilotes IA par temps réalistes, argent, boutique (voitures et 4 améliorations), déblocages, sauvegarde `localStorage`.
 
 ## Touches (AZERTY)
-`Z S Q D` / flèches, `Espace` frein à main, `C` vue (poursuite, capot, pare-chocs, cabine), `M` carte, `L` phares, `V` voix du copilote, `R` redémarrer (double appui), `T` remise en piste (double appui), `Échap` pause. Manette ou volant via l'API Gamepad.
+`Z S Q D` / flèches, `Espace` frein à main, `C` vue (poursuite, capot, pare-chocs), `M` carte, `L` phares, `V` voix du copilote, `R` redémarrer (double appui), `T` remise en piste (double appui), `Échap` pause. Manette ou volant via l'API Gamepad.
 
 ## Arborescence
 ```
@@ -29,6 +29,16 @@ src/audio    audio
 src/ui       hud, menus
 src/main.js  boucle et enchaînement
 ```
+
+## Fiche technique
+
+Résumé de ce que fait le code, tenu à jour à chaque modification : le lire suffit pour vérifier une information sans relire tout le jeu.
+
+- **Code** : modules `src/` ; voiture `src/car/model.js` (+ `src/car/physics`), caméras `src/camera/views.js`, décor `src/stage/`, menus `src/ui/menus.js`, sauvegarde `src/core/save.js`.
+- **Voitures** : `rally-peugeot-205`, `rally-subaru-impreza`, `rally-ford-escort`, `rally-lancia-s4` (`.glb`, pack DisneyCars, CC-BY) ; roues par `rigWheels`.
+- **Caméras (C)** : Poursuite, Capot, Pare-chocs. Pas de vue cabine : les modèles n'ont pas d'habitacle (vitres peintes). Le réglage « Vue au départ » du menu propose les trois mêmes.
+- **Spectateurs** : `proportional_low_poly_man__free_download.glb`.
+- **Sauvegarde** : `rally-masters:v1` (réglages, progression).
 
 ## Crédits des modèles 3D
 
